@@ -15,6 +15,7 @@ export default class Binder {
 
     change(value) {
         if (!value) {
+            this.element.value = this.model;
             return;
         }
         this.model = value;
