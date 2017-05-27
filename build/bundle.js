@@ -132,7 +132,7 @@ var input = new _binder2.default(document.getElementById("counter"), 1);
 
 setInterval(function () {
   return input.change(+input.model + 1);
-}, 1000);
+}, 60000);
 
 /***/ })
 /******/ ]);
