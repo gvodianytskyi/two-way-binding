@@ -134,15 +134,17 @@ var intervalSeconds = intervalInput.value * 1000;
 var timer = void 0;
 var counterInput = new _binder2.default(document.getElementById("counter"), 1);
 
+timer = setTimeout(repeatIncrement, intervalSeconds);
+
 intervalInput.onchange = function (event) {
     intervalSeconds = event.target.value * 1000;
     clearTimeout(timer);
-    timer = setTimeout(repeat, intervalSeconds);
+    timer = setTimeout(repeatIncrement, intervalSeconds);
 };
 
-function repeat() {
+function repeatIncrement() {
     counterInput.change(+counterInput.model + 1);
-    timer = setTimeout(repeat, intervalSeconds);
+    timer = setTimeout(repeatIncrement, intervalSeconds);
 };
 
 /***/ })
