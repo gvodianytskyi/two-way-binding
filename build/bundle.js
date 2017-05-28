@@ -129,11 +129,27 @@ var _binder2 = _interopRequireDefault(_binder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var input = new _binder2.default(document.getElementById("counter"), 1);
+var intervalInput = document.getElementById("interval");
+var intervalSeconds = intervalInput.value * 1000; // dynamic interval
+var timer = void 0; // current timeout id to clear
+var counterInput = new _binder2.default(document.getElementById("counter"), 1);
 
-setInterval(function () {
-  return input.change(+input.model + 1);
-}, 60000);
+intervalInput.onchange = function (event) {
+    intervalSeconds = event.target.value * 1000;
+    clearTimeout(timer);
+    setTimeout(repeat, intervalSeconds);
+};
+
+function increment() {
+    counterInput.change(+counterInput.model + 1);
+};
+
+function repeat() {
+    increment();
+    timer = setTimeout(repeat, intervalSeconds);
+};
+
+setTimeout(repeat, intervalSeconds);
 
 /***/ })
 /******/ ]);
